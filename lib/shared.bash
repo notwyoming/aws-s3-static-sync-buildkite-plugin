@@ -22,6 +22,14 @@ function aws_s3_sync() {
     params+=("--endpoint-url=${BUILDKITE_PLUGIN_AWS_S3_SYNC_ENDPOINT_URL/\ /}")
   fi
 
+  if [[ -n "${BUILDKITE_PLUGIN_AWS_S3_SYNC_EXCLUDE:-}" ]]; then
+    params+=("--exclude=${BUILDKITE_PLUGIN_AWS_S3_SYNC_EXCLUDE/\ /}")
+  fi
+
+  if [[ -n "${BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL:-}" ]]; then
+    params+=("--acl=${BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL/\ /}")
+  fi
+
   params+=("$source")
   params+=("$destination")
 

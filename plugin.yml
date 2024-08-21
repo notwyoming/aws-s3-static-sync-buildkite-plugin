@@ -17,6 +17,10 @@ configuration:
       type: string
     endpoint-url:
       type: string
+    exclude:
+      type: string
+    acl:
+      type: string
   required:
     - source
     - destination
