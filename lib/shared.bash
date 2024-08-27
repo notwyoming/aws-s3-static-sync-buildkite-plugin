@@ -33,6 +33,6 @@ function aws_s3_sync() {
   params+=("$source")
   params+=("$destination")
 
-  echo "~~~ :s3: Syncing $source to $destination"
+  echo "~~~ :s3: Syncing $source to $destination with flags: ${params[@]}"
   aws s3 sync "${params[@]}"
 }
