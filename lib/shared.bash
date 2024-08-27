@@ -4,9 +4,6 @@ function aws_s3_sync() {
   local source=$1
   local destination=$2
 
-  echo "~~~ :s3: ACL PRINT OUT"
-  echo $BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL
-
   params=()
 
   if [[ "${BUILDKITE_PLUGIN_AWS_S3_SYNC_DELETE:-false}" == "true" ]]; then
@@ -30,6 +27,8 @@ function aws_s3_sync() {
   fi
 
   if [[ -n "${BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL:-}" ]]; then
+    echo "~~~ :s3: ACL PRINT OUT"
+    echo $BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL
     params+=("--acl=${BUILDKITE_PLUGIN_AWS_S3_SYNC_ACL/\ /}")
   fi
 
